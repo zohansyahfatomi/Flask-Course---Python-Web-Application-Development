@@ -1,9 +1,3 @@
-# Ignore Mac system files
-.DS_store
-
-# Ignore node_modules folder
-node_modules
-
 # Ignore all text files
 *.txt
 
@@ -22,8 +16,11 @@ venv.bak/
 #Ignore hello.py
 hello.py
 
-.git
+#ignore gitignore file
+.gitignore
 
+#ignore readme.md
 *.md
 
+# Environments
 __pycache__/
