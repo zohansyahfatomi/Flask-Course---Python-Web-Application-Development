@@ -22,6 +22,8 @@ venv.bak/
 #Ignore hello.py
 hello.py
 
-.gitignore
+.git
 
-readme.md
+*.md
+
+__pycache__/
