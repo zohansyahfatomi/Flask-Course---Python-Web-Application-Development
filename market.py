@@ -1,6 +1,7 @@
 from enum import unique
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
+
 from werkzeug.exceptions import LengthRequired
 
 app = Flask(__name__) #built-in variable 
@@ -14,14 +15,8 @@ class Item(db.Model):
     barcode = db.Column(db.String(length=12), nullable=False, unique=True)
     description = db.Column(db.String(length=1024), nullable=False, unique=True)
 
-    def __repr__(self) -> str:
+    def __repr__(self):
         return f'Item {self.name}'
-        #return super().__repr__()   
-
-
-
-
-
 
 @app.route('/') #decorators
 @app.route('/home')
