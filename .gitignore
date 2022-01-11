@@ -24,3 +24,5 @@ hello.py
 
 # Environments
 __pycache__/
+
+*.pyc
