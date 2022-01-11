@@ -1,6 +1,8 @@
 #from enum import unique
 from flask import Flask, render_template
+#from flask_sqlalchemy import SQLAlchemy
 from flask_sqlalchemy import SQLAlchemy
+
 
 from werkzeug.exceptions import LengthRequired
 
@@ -26,7 +28,8 @@ def home_page():
 @app.route('/market')
 def market_page():
     items = Item.query.all()
-
+    return render_template('market.html', items=items)
+    
     '''
     items = [
     {'id': 1, 'name': 'Phone', 'barcode': '893212299897', 'price': 500},
