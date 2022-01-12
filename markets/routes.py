@@ -1,5 +1,5 @@
 from markets import app
-from flask import render_template, redirect, url_for
+from flask import render_template, redirect, url_for, flash
 from markets.models import Item, User
 from markets.form import RegisterForm
 from markets import db
@@ -27,6 +27,6 @@ def register_page():
     
     if form.errors != {}: #if there not errors from the validation
         for err_msg in form.errors.values():
-            print(f'There are an error: {err_msg}')
+            flash(f'There are an error: {err_msg}',category='danger')
 
     return render_template('register.html', form = form)
