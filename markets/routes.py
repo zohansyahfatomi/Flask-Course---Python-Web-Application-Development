@@ -3,14 +3,15 @@ from flask import render_template, redirect, url_for, flash
 from markets.models import Item, User
 from markets.form import RegisterForm, LoginForm
 from markets import db
-from flask_login import login_user,logout_user
+from flask_login import login_user,logout_user, login_required
 
-@app.route('/') #decorators
+@app.route('/') #decorator is executed before the function itself.
 @app.route('/home')
 def home_page():
     return render_template('home.html')
 
 @app.route('/market')
+@login_required
 def market_page():
     items = Item.query.all()
     return render_template('market.html', items=items)
@@ -24,6 +25,8 @@ def register_page():
                               password=form.password1.data)
         db.session.add(user_to_create)
         db.session.commit()
+        login_user(user_to_create)
+        flash(f'Account is created successfully! You are now logged in as {user_to_create.username}')
         return redirect(url_for('market_page'))
     
     if form.errors != {}: #if there not errors from the validation
